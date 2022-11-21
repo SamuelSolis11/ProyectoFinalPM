@@ -2,10 +2,10 @@ from config import BaseConfig
 from app import db
 
 class Usuario(db.Model):
-    idUsuario = db.Column(db.Integer,primary_key=True)
+    idUsuario = db.Column(db.Integer,primary_key=True,autoincrement=True)
     nombreUsuario = db.Column(db.String(250))
-    correo = db.Column(db.String(250))
-    contraseña = db.Column(db.String(250))
+    correo = db.Column(db.String(250),unique=True,nullable=False)
+    contraseña = db.Column(db.String(250),nullable=False)
     edad = db.Column(db.Integer)
 
     def __str__(self) -> str:
@@ -18,7 +18,7 @@ class Usuario(db.Model):
         )
 
 class Venta(db.Model):
-    idVenta = db.Column(db.Integer,primary_key=True)
+    idVenta = db.Column(db.Integer,primary_key=True,autoincrement=True)
     total = db.Column(db.Integer)
 
     def __str__(self) -> str:
@@ -28,7 +28,7 @@ class Venta(db.Model):
         )
 
 class Proveedor(db.Model):
-    idProveedor = db.Column(db.Integer,primary_key=True)
+    idProveedor = db.Column(db.Integer,primary_key=True,autoincrement=True)
     nombreProveedor = db.Column(db.String(250))
     direccion = db.Column(db.String(250))
 
@@ -39,7 +39,7 @@ class Proveedor(db.Model):
         )
 
 class Producto(db.Model):
-    idProducto = db.Column(db.Integer,primary_key=True)
+    idProducto = db.Column(db.Integer,primary_key=True,autoincrement=True)
     nombreProducto = db.Column(db.String(250))
 
     def __str__(self) -> str:
