@@ -4,6 +4,7 @@ from config import BaseConfig
 from app import db, bcrypt
 
 class Usuario(db.Model):
+        __tablename__="usuarios"
         idUsuario = db.Column(db.Integer,primary_key=True,autoincrement=True)
         nombreUsuario = db.Column(db.String(250))
         correo = db.Column(db.String(250),unique=True,nullable=False)
@@ -12,14 +13,14 @@ class Usuario(db.Model):
         registered_on = db.Column(db.DateTime, nullable=False)
         admin = db.Column(db.Boolean, nullable=False, default=False)
         
-        def __init__(self, nombreUsuario,correo, contraseña, admin=False):
+        def __init__(self, nombreUsuario,correo, contraseña, edad,admin=False):
                 
                 self.nombreUsuario = nombreUsuario
                 self.correo = correo
                 self.contraseña = bcrypt.generate_password_hash(
                         contraseña,BaseConfig.BCRYPT_LOG_ROUNDS
                 ).decode()
-        
+                self.edad=edad
                 self.registered_on = datetime.datetime.now()
                 self.admin = admin
         
@@ -52,7 +53,9 @@ class Usuario(db.Model):
 
 
 class Venta(db.Model):
+    __tablename__="ventas"
     idVenta = db.Column(db.Integer,primary_key=True,autoincrement=True)
+    fecha = db.Column(db.DateTime, nullable=False)
     total = db.Column(db.Integer)
 
     def __str__(self) -> str:
@@ -62,6 +65,7 @@ class Venta(db.Model):
         )
 
 class Proveedor(db.Model):
+    __tablename__="proveedor"
     idProveedor = db.Column(db.Integer,primary_key=True,autoincrement=True)
     nombreProveedor = db.Column(db.String(250))
     direccion = db.Column(db.String(250))
@@ -73,8 +77,10 @@ class Proveedor(db.Model):
         )
 
 class Producto(db.Model):
+    __tablename__="producto"
     idProducto = db.Column(db.Integer,primary_key=True,autoincrement=True)
     nombreProducto = db.Column(db.String(250))
+    desProducto = db.Column(db.Text)
 
     def __str__(self) -> str:
         return ( f'idProducto:{self.idProducto},'
