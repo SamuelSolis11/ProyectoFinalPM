@@ -1,4 +1,4 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,render_template,redirect
 from flask_cors import CORS
 from database import db
 from encriptador import bcrypt
@@ -14,6 +14,18 @@ bcrypt.init_app(app)
 db.init_app(app)
 migrate = Migrate()
 migrate.init_app(app,db)
+
+@app.route('/')
+@app.route('/inicio')
+@app.route('/inicio.html')
+def inicio():
+    return render_template('inicio.html')
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
 
 @app.route('/auth/registro',methods=['POST'])
 def registro():
