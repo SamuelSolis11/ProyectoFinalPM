@@ -83,26 +83,7 @@
         color: #fff;
         }
 
-        #slide2 {
-        background-color: #65bce8;
-        color: #00324b;
-        }
-
-        #slide3 {
-        background-color: #f90;
-        color: #00324b;
-        }
-
-        #slide4 {
-        background-color: #00324b;
-        color: #65bce8;
-        }
-
-        #slide5 {
-        background-color: #65bce8;
-        color: #00324b;
-        }
-
+    
         nav {
         width: 100vw;
         position: absolute;
@@ -160,19 +141,17 @@
 </head>
 <body>
     <ul class="slider">
-        <li id="slide1">Muebleria LGS</li>
-        <li id="slide2"><p>Gema nataly Meraz Sanchez 
-            <br> Samuel Alberto Solis Baldenegro
-            <br> Luis Angel Hernandez Lopez
-        </p></li>
-        <li id="slide3"><p>ALVARO OBREGÓN 3708, JARDIN, NUEVO LAREDO, TAMS, C.P. 88260.</p>
-        <img src="https://irp-cdn.multiscreensite.com/b8bfbe58/MOBILE/jpg/999.jpg" ></li>
+        <li id="slide1">Muebleria LGS
+            <br>Los mejores muebles los encuentras aqui.
+            <img src="https://img.freepik.com/vector-gratis/conjunto-muebles-hogar_74855-15461.jpg?w=2000" width="50%" height="60%">
+        </li>
+        <li id="slide2"></li>
     </ul>
     <nav>
         <ul class="menu">
-            <li><a href="#slide1">Nombre de la Muebleria</a></li>
-            <li><a href="#slide2">Datos de los duenos</a></li>
-            <li><a href="#slide3">ubicacion</a></li>
+            <li><a href="{{url_for('login')}}"> Inicio de Sesion </a></li>
+            <li><a href="{{url_for('registrarse')}}">Registrarse</a></li>
+            
         </ul>
     </nav>
 </body>

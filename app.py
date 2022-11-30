@@ -29,9 +29,9 @@ admin.add_view(ModelView(Proveedor,db.session))
 #@app.route('/inicio.html')
 def inicio():
     #if 'username' in session:
-    #   return render_template('login.html')
+      return render_template('index.html')
     #else:
-        return redirect(url_for('login'))
+        #return redirect(url_for('login'))
 
 @app.route('/login' ,methods=['GET','POST'])
 def login():
@@ -49,7 +49,7 @@ def login():
 
 @app.route('/logout')
 def logout():
-    return redirect(url_for('inicio.html'))
+    return redirect(url_for('index.html'))
 
 
 #@app.route('/admin/', methods=['GET','POST'])
