@@ -84,3 +84,11 @@ def registro():
     #    "edad":22,
     #    "admin":true
     #}
+
+@app.errorhandler(404)
+def paginaEncontrada(error):
+  return render_template('404.html',error=error),404
+
+@app.errorhandler(500)
+def paginaNoEncontrada(error):
+  return render_template('500.html',error=error) ,500
